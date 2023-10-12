@@ -8,9 +8,7 @@ import {
 	Routes,
 	Route,
 } from 'react-router-dom';
-import Sports from './components/Sports';
 import About from './components/About';
-import Business from './components/Business';
 
 export default class App extends Component {
   render() {
@@ -19,10 +17,10 @@ export default class App extends Component {
         <Router>
         <NavBar/>
         <Routes>
-          <Route path="/" element={<News />}/>
+          <Route path="/" element={<News key={"general"} category={"general"}/>}/>
           <Route path="/about" element={<About />} />
-          <Route path="/sports" element={<Sports />} />
-          <Route path="/business" element={<Business />} />
+          <Route path="/sports" element={<News key={"sports"} category={"sports"}/>} />
+          <Route path="/business" element={<News key={"business"} category={"business"}/>} />
         </Routes>
         </Router>
       </div>
