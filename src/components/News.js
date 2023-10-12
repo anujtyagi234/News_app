@@ -65,8 +65,10 @@ export class News extends Component {
                 {this.state.loading && <Spinner/>}
                 <div className='row'>
                     {!this.state.loading && this.state.article.map((element) => {
-                       return <div className='col-md-4' key={element.url} >
+                       return <div className='col-md-3' key={element.url} >
+                         <div className="d-flex flex-column align-items-center">
                             <NewsItem title={element.title} desc={element.description} imageUrl={element.urlToImage} NewsUrl={element.url} publishedAt={element.publishedAt} />
+                        </div>
                         </div>
                     })}
                 </div>
