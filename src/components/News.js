@@ -10,7 +10,8 @@ export class News extends Component {
             page: 1,
             article: [],
             totalResults: 0,
-            loading: false
+            loading: false,
+            publishedAt:""
         };        
     }
     async componentDidMount() {
@@ -23,7 +24,8 @@ export class News extends Component {
         this.setState({loading:false})
         this.setState({
             article: parsedData.articles,
-            totalResults: parsedData.totalResults
+            totalResults: parsedData.totalResults,
+            publishedAt: parsedData.publishedAt
         });
     }
 
@@ -37,7 +39,8 @@ export class News extends Component {
         this.setState({
             page: this.state.page - 1,
             article: parsedData.articles,
-            totalResults: parsedData.totalResults
+            totalResults: parsedData.totalResults,
+            publishedAt: parsedData.publishedAt
         });
     }
     
@@ -51,7 +54,8 @@ export class News extends Component {
         this.setState({
             page: this.state.page + 1,
             article: parsedData.articles,
-            totalResults: parsedData.totalResults
+            totalResults: parsedData.totalResults,
+            publishedAt: parsedData.publishedAt
         });
     }
     render() {
@@ -62,7 +66,7 @@ export class News extends Component {
                 <div className='row'>
                     {!this.state.loading && this.state.article.map((element) => {
                        return <div className='col-md-4' key={element.url} >
-                            <NewsItem title={element.title} desc={element.description} imageUrl={element.urlToImage} NewsUrl={element.url} />
+                            <NewsItem title={element.title} desc={element.description} imageUrl={element.urlToImage} NewsUrl={element.url} publishedAt={element.publishedAt} />
                         </div>
                     })}
                 </div>
